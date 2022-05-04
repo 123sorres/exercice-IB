@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+
+  node:
+    image: node:16.14.2
+    volumes:
+      - ./card-collection-ss:/var/www
+    ports:
+      - '8000:5000'
+    links:
+      - mongo
+    environment:
+      - MONGO_URI=mongodb://admin:admin1234@mongo
+    command: bash -c "cd /var/www && npm run start"
+
+  mongo:
+    image: mongo:latest
+    volumes:
+      - ./mongo/data:/data/db
+    ports: 
+      - '27017:27017'
+    environment: 
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin1234
+
+  mongo-test:
+    image: mongo:latest
+    volumes:
+      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+    ports: 
+      - '27011:27017'
+    environment: 
+      - MONGO_INITDB_ROOT_USERNAME=test
+      - MONGO_INITDB_ROOT_PASSWORD=test1234
