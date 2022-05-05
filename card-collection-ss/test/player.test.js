@@ -24,10 +24,18 @@ const playersTest = [
         pictureLink: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/2019-07-17_SG_Dynamo_Dresden_vs._Paris_Saint-Germain_by_Sandro_Halank%E2%80%93129_%28cropped%29.jpg/800px-2019-07-17_SG_Dynamo_Dresden_vs._Paris_Saint-Germain_by_Sandro_Halank%E2%80%93129_%28cropped%29.jpg',
         position: 'Attaquant',
         clubList: ['Monaco', 'Paris Saint-Germain']
-    }
+    },
+    {
+		_id: 3,
+		firstName: "Lionel",
+		lastName: "Messi",
+		birthdayDate: new Date(1987, 5, 24),
+		position: "Attaquant",
+		clubList: ["FC Barcelone", "Paris Saint-Germain"]
+	}
 ]
 
-describe('Products success', () => {
+describe('Players success', () => {
     beforeEach((done) => {
         Player.deleteMany({}, (err) => {
             done();
@@ -47,7 +55,7 @@ describe('Products success', () => {
             .end((err, res) => {
                 res.should.have.status(200);
                 res.body.should.be.a('array')
-                res.body.length.should.be.eq(2);
+                res.body.length.should.be.eq(3);
                 done();
             });
         });
@@ -73,7 +81,7 @@ describe('Products success', () => {
     describe('/POST player', () => {
         it('it should create a player', (done) => {
             const newPlayer =  {
-                _id: 3,
+                _id: 4,
                 firstName: 'new player',
                 lastName: 'new player name',
                 birthdayDate: new Date(1993, 6, 25),
@@ -118,7 +126,7 @@ describe('Products success', () => {
                 .end((err, res) => {
                     res.should.have.status(200);
                     res.body.should.be.a('array')
-                    res.body.length.should.be.eq(1);
+                    res.body.length.should.be.eq(2);
                     done();
                 });
             })
@@ -126,7 +134,7 @@ describe('Products success', () => {
     });
 });
 
-describe('Products not found', () => {
+describe('Players not found', () => {
     beforeEach((done) => {
         Player.deleteMany({}, (err) => {
             done();
@@ -188,7 +196,7 @@ describe('Products not found', () => {
     });
 });
 
-describe('Products error', () => {
+describe('Players error', () => {
     beforeEach((done) => {
         Player.deleteMany({}, (err) => {
             done();
