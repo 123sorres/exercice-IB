@@ -36,6 +36,6 @@ app.use('/api/players', playerRouter);
 //   res.render('error');
 // });
 
-mongodb.initClientDbConnection().then(() => app.listen(5000));
+mongodb.initClientDbConnection().then(() => app.listen(8000));
 
 module.exports = app;

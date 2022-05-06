@@ -104,7 +104,7 @@ describe('Players success', () => {
             newPlayer.firstName = 'name updated';
             newPlayer.position = 'Défenseur';
             chai.request(server)
-            .put('/api/players/1')
+            .put('/api/players')
             .send(newPlayer)
             .end((err, res) => {
                 res.should.have.status(200);
@@ -169,11 +169,11 @@ describe('Players not found', () => {
 
     describe('/PUT player', () => {
         it('it should update a player', (done) => {
-            const newPlayer = playersTest[0];
-            newPlayer.firstName = 'name updated';
-            newPlayer.position = 'Défenseur';
+            const newPlayer =  {
+                _id: -1,
+            }
             chai.request(server)
-            .put('/api/players/1')
+            .put('/api/players')
             .send(newPlayer)
             .end((err, res) => {
                 res.should.have.status(404);
@@ -224,21 +224,6 @@ describe('Players error', () => {
             chai.request(server)
             .post('/api/players')
             .send(null)
-            .end((err, res) => {
-                res.should.have.status(500);
-                done();
-            });
-        });
-    });
-
-    describe('/PUT player', () => {
-        it('it should update a player', (done) => {
-            const newPlayer = playersTest[0];
-            newPlayer.firstName = 'name updated';
-            newPlayer.position = 'Défenseur';
-            chai.request(server)
-            .put('/api/players/dfg')
-            .send(newPlayer)
             .end((err, res) => {
                 res.should.have.status(500);
                 done();

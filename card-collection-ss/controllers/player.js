@@ -38,9 +38,8 @@ exports.createPlayer = async (req, res, next) => {
 }
 
 exports.updatePlayer = async (req, res, next) => {
-    const id = { _id: req.params.id };
     try {
-        const player = await Player.findOneAndUpdate(id, req.body, {new: true});
+        const player = await Player.findOneAndUpdate(req.body.id, req.body, {new: true});
 
         if (player) {
             return res.status(200).json(player);

@@ -9,7 +9,7 @@ router.get('/:id', controller.getPlayer)
 
 router.post('/', controller.createPlayer) 
 
-router.put('/:id', controller.updatePlayer) 
+router.put('/', controller.updatePlayer) 
 
 router.delete('/:id', controller.deletePlayer)
 
