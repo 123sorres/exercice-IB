@@ -1,6 +1,6 @@
 db.getCollection("players").insertMany([
 	{
-		_id: 1,
+		_id: "abea07be-cd9c-11ec-9d64-0242ac120002",
 		firstName: "Lionel",
 		lastName: "Messi",
 		birthdayDate: new Date(1987, 5, 24),
@@ -9,7 +9,7 @@ db.getCollection("players").insertMany([
 		clubList: ["FC Barcelone", "Paris Saint-Germain"]
 	},
 	{
-		_id: 2,
+		_id: "abea0980-cd9c-11ec-9d64-0242ac120002",
 		firstName: "Robert",
 		lastName: "Lewandowski ",
 		birthdayDate: new Date(1988, 7, 21),
@@ -18,7 +18,7 @@ db.getCollection("players").insertMany([
 		clubList: ["Znicz Pruszków", "Lech Poznań", "Borussia Dortmund", "Bayern Munich"]
 	},
 	{
-		_id: 3,
+		_id: "abea0a84-cd9c-11ec-9d64-0242ac120002",
 		firstName: "Jorge",
 		lastName: "Luiz Frello Filho",
 		birthdayDate: new Date(1991, 11, 20),
@@ -27,7 +27,7 @@ db.getCollection("players").insertMany([
 		clubList: ["Hellas Vérone", "AC Sambonifacese", "SSC Naples", "Chelsea FC"]
 	},
 	{
-		_id: 4,
+		_id: "abea0b6a-cd9c-11ec-9d64-0242ac120002",
 		firstName: "Karim",
 		lastName: "Benzema",
 		birthdayDate: new Date(1987, 11, 19),
@@ -36,7 +36,7 @@ db.getCollection("players").insertMany([
 		clubList: ["Olympique lyonnais", "Real Madrid"]
 	},
 	{
-		_id: 5,
+		_id: "abea0c46-cd9c-11ec-9d64-0242ac120002",
 		firstName: "N'Golo",
 		lastName: "Kanté",
 		birthdayDate: new Date(1991, 2, 29),
@@ -45,7 +45,7 @@ db.getCollection("players").insertMany([
 		clubList: ["US Boulogne", "SM Caen","Leicester City", "Chelsea FC"]
 	},
 	{
-		_id: 6,
+		_id: "abea0d22-cd9c-11ec-9d64-0242ac120002",
 		firstName: "Cristiano",
 		lastName: "Ronaldo",
 		birthdayDate: new Date(1985, 1, 5),
@@ -54,7 +54,7 @@ db.getCollection("players").insertMany([
 		clubList: ["Sporting CP", "Manchester United", "Real Madrid", "Juventus FC"]
 	},
 	{
-		_id: 7,
+		_id: "abea0df4-cd9c-11ec-9d64-0242ac120002",
 		firstName: "Mohamed",
 		lastName: "Salah",
 		birthdayDate: new Date(1992, 5, 15),
@@ -63,7 +63,7 @@ db.getCollection("players").insertMany([
 		clubList: ["Arab Contractors", "FC Bâle", "Chelsea FC", "ACF Fiorentina", "AS Rome", "Liverpool FC"]
 	},
 	{
-		_id: 8,
+		_id: "abea0eda-cd9c-11ec-9d64-0242ac120002",
 		firstName: "Kylian",
 		lastName: "Mbappé",
 		birthdayDate: new Date(1998, 11, 20),

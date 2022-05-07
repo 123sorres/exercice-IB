@@ -8,7 +8,7 @@ chai.use(chaiHttp);
 
 const playersTest = [
     {
-        _id: 1,
+        _id: 'abea07be-cd9c-11ec-9d64-0242ac120002',
         firstName: 'Player1',
         lastName: 'PlayerLastName1',
         birthdayDate: new Date(),
@@ -17,7 +17,7 @@ const playersTest = [
         clubList: ['Real Sociedad', 'Atlético de Madrid', 'FC Barcelone']
     },
     {
-        _id: 2,
+        _id: 'abea0980-cd9c-11ec-9d64-0242ac120002',
         firstName: 'Player2',
         lastName: 'PlayerLastName2',
         birthdayDate: new Date(1993, 10, 30),
@@ -26,7 +26,7 @@ const playersTest = [
         clubList: ['Monaco', 'Paris Saint-Germain']
     },
     {
-		_id: 3,
+		_id: 'abea0a84-cd9c-11ec-9d64-0242ac120002',
 		firstName: "Lionel",
 		lastName: "Messi",
 		birthdayDate: new Date(1987, 5, 24),
@@ -64,7 +64,7 @@ describe('Players success', () => {
     describe('/GET player with id', () => {
         it('it should get player with id', (done) => {
             chai.request(server)
-            .get('/api/players/2')
+            .get('/api/players/abea0980-cd9c-11ec-9d64-0242ac120002')
             .end((err, res) => {
                 res.should.have.status(200);
                 res.body.should.have.property('firstName', 'Player2');
@@ -81,7 +81,7 @@ describe('Players success', () => {
     describe('/POST player', () => {
         it('it should create a player', (done) => {
             const newPlayer =  {
-                _id: 4,
+                _id: 'abea09455-cd9c-11ec-9d64-0242ac120002',
                 firstName: 'new player',
                 lastName: 'new player name',
                 birthdayDate: new Date(1993, 6, 25),
@@ -104,7 +104,7 @@ describe('Players success', () => {
             newPlayer.firstName = 'name updated';
             newPlayer.position = 'Défenseur';
             chai.request(server)
-            .put('/api/players')
+            .put('/api/players/' + newPlayer._id)
             .send(newPlayer)
             .end((err, res) => {
                 res.should.have.status(200);
@@ -118,7 +118,7 @@ describe('Players success', () => {
     describe('/DELETE player with id', () => {
         it('it should delete player with id', (done) => {
             chai.request(server)
-            .delete('/api/players/1')
+            .delete('/api/players/abea0980-cd9c-11ec-9d64-0242ac120002')
             .end((err, res) => {
                 res.should.have.status(200);
                 chai.request(server)
@@ -143,7 +143,7 @@ describe('Players not found', () => {
 
 
     describe('/GET all players', () => {
-        it('it should get all players', (done) => {
+        it('it should get an empty array of players', (done) => {
             chai.request(server)
             .get('/api/players')
             .end((err, res) => {
@@ -156,9 +156,9 @@ describe('Players not found', () => {
     });
 
     describe('/GET player with id', () => {
-        it('it should get player with id', (done) => {
+        it('it should return 404', (done) => {
             chai.request(server)
-            .get('/api/players/2')
+            .get('/api/players/abea0980-cd9c-11ec-9d64-0242ac120002')
             .end((err, res) => {
                 res.should.have.status(404);
                 expect(res.body).to.have.property('msg', 'Player not found');
@@ -168,12 +168,12 @@ describe('Players not found', () => {
     });
 
     describe('/PUT player', () => {
-        it('it should update a player', (done) => {
+        it('it should not update a player and return 404', (done) => {
             const newPlayer =  {
-                _id: -1,
+                _id: "ffqf",
             }
             chai.request(server)
-            .put('/api/players')
+            .put('/api/players/' + newPlayer._id)
             .send(newPlayer)
             .end((err, res) => {
                 res.should.have.status(404);
@@ -184,9 +184,9 @@ describe('Players not found', () => {
     });
 
     describe('/DELETE player with id', () => {
-        it('it should delete player with id', (done) => {
+        it('it should not delete a player and return 404', (done) => {
             chai.request(server)
-            .delete('/api/players/1')
+            .delete('/api/players/abea0980-cd9c-11ec-9d64-0242ac120002')
             .end((err, res) => {
                 res.should.have.status(404);
                 expect(res.body).to.have.property('msg', 'Player not found');
@@ -208,19 +208,8 @@ describe('Players error', () => {
         });
     });
 
-    describe('/GET player with id', () => {
-        it('it should get player with id', (done) => {
-            chai.request(server)
-            .get('/api/players/ade')
-            .end((err, res) => {
-                res.should.have.status(500);
-                done();
-            });
-        });
-    });
-
     describe('/POST player', () => {
-        it('it should create a player', (done) => {
+        it('it should get a 500 error', (done) => {
             chai.request(server)
             .post('/api/players')
             .send(null)
@@ -228,18 +217,6 @@ describe('Players error', () => {
                 res.should.have.status(500);
                 done();
             });
-        });
-    });
-
-    describe('/DELETE player with id', () => {
-        it('it should delete player with id', (done) => {
-            chai.request(server)
-            .delete('/api/players/adqsd')
-            .end((err, res) => {
-                res.should.have.status(500);
-                chai.request(server)
-                done();
-            })
         });
     });
 });
