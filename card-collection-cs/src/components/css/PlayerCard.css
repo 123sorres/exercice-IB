@@ -1,0 +1,30 @@
+.card {
+    height:400px;
+    width: 280px;
+}
+
+.border-def {
+    border: 2px solid #00B2EE;
+}
+
+.border-middle {
+    border: 2px solid #00A36C;
+}
+
+.border-att {
+    border: 2px solid #D70040;
+}
+
+.img-card {
+    max-height: 250px;
+    max-width: 260px;
+}
+
+.col-img {
+    height: 260px;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
