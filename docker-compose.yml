@@ -21,7 +21,7 @@ services:
       - mongo
     environment:
       - MONGO_URI=mongodb://admin:admin1234@mongo
-    command: bash -c "cd /var/www && npm run start"
+    command: bash -c "cd /var/www && npm i && npm run start"
 
   mongo:
     image: mongo:latest
