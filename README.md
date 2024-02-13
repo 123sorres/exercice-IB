@@ -12,3 +12,4 @@ Start the application with docker. Contains mongodb databse, nodejs backend and 
 
 Start the mongodb database for test purpose.
 
+rajout test
